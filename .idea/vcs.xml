@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="VcsDirectoryMappings">
-    <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Node" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/Node/code-school-nodejs-todo-backend-psanon19" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/code-school-nodejs-todo-backend-psanon19" vcs="Git" />
-  </component>
-</project>
