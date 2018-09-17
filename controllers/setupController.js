@@ -1,5 +1,6 @@
 // We first need to load our mongoose data model
 const Todos = require('../models/todoModel');
+const moment = require('moment');
 
 module.exports = function(app) {
     // Add an API endpoint with some dummy data
@@ -8,19 +9,22 @@ module.exports = function(app) {
        // seed database
        const starterTodos = [
            {
-               username: 'testuser',
-               todo: 'Buy milk',
-               isDone: false
+               username: 'DrWilly',
+               todo: 'Build castle',
+               isDone: true,
+               dueDate: moment().subtract(10, 'days').calendar()
            },
            {
-               username: 'testuser',
-               todo: 'Feed dog',
-               isDone: false
+               username: 'DrWilly',
+               todo: 'Make more minions',
+               isDone: true,
+               dueDate: moment().format()
            },
            {
-               username: 'testuser',
-               todo: 'Learn Node',
-               isDone: false
+               username: 'DrWilly',
+               todo: 'Eat some Noodles',
+               isDone: true,
+               dueDate: moment().subtract(7,'days').calendar()
            }
        ];
 

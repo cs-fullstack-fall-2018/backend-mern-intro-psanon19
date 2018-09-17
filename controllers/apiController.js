@@ -1,6 +1,6 @@
 // We first need to load our mongoose data model
 const Todos = require('../models/todoModel');
-
+const moment = require('moment');
 // Include body parser
 const bodyParser = require('body-parser'); // In node_modules
 
@@ -8,6 +8,32 @@ module.exports = function (app) {
 
     app.use(bodyParser.json()); // Use body parser middleware
     app.use(bodyParser.urlencoded({extended: true})); // Parse out any JSON from body and handle URL encoded data
+
+    //Get all open TO Dos
+    app.get('/api/Todos/all/open', function (req, res){
+        Todos.find({isDone: false}, function (err, todos) { //Use the find method on the data model to search DB
+            if (err) {
+                throw err; // If we get an error then bail
+            }
+            // Use Express to send the JSON back to the client in the web response
+            res.send(todos);
+        });
+
+    });
+
+    //Get all open TO Dos
+    app.get('/api/todo/age/:numDays', function (req, res){
+        var numDays = moment().subtract(req.params.numDays,'days');
+
+        Todos.find({$and: [{isDone: false},{dueDate: {$lte: numDays}}]}, function (err, todos) { //Use the find method on the data model to search DB
+            if (err) {
+                throw err; // If we get an error then bail
+            }
+            // Use Express to send the JSON back to the client in the web response
+            res.send(todos);
+        });
+
+    });
 
     //  Add a method to get all todos for a particular User (uname)
     app.get('/api/Todo/:uname', function (req, res) {

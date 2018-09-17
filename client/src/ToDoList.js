@@ -11,18 +11,25 @@ class ToDoList extends Component {
             let i = 1;
             if (booleanInfo === false){
                 fetch = itemFalse;
+                if (booleanInfo === false) {
+                    i = i + 1;
+                }
 
             }
 
             else if (booleanInfo === true){
                 fetch = (itemTrue.strike());
+                if (booleanInfo === true) {
+                    i = i + 1;
+                }
 
             }
 
 
             return (
                 <div key={eachItem._id} className='ToDolist'>
-                    {(i+i)}<p>{eachItem.username} has to {eachItem.todo} is <u dangerouslySetInnerHTML={{__html: fetch}}>
+                    <p>{(i)}: {eachItem.dueDate}</p>
+                    <p>{eachItem.username} has to {eachItem.todo} is <u dangerouslySetInnerHTML={{__html: fetch}}>
                         </u></p>
                     <p>{": "+eachItem._id}</p>
                     <button onClick={() => this.props.deleteFunction(eachItem._id)}>Delete</button>
